@@ -7,11 +7,10 @@ jobs:
       - image: 'cimg/node:lts'
     steps:
       - checkout
-      - run: npm ci
       - snyk/scan:
           fail-on-issues: false
           monitor-on-build: true
           project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-app'
-          severity-threshold: low
+          severity-threshold: high
           token-variable: SNYK_TOKEN
 workflows: null
